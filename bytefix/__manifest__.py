@@ -9,7 +9,9 @@
     'author': 'David Cordon Garrido',
     'depends': ['base'],
     'data': [
-        'views/cliente_views.xml',
+    'security/ir.model.access.csv',
+    'views/cliente_views.xml',
+    'views/equipo_views.xml',
     ],
     'installable': True,
     'application': True,
