@@ -13,4 +13,8 @@ class Cliente(models.Model):
     habitual = fields.Boolean(string="Cliente habitual")
     foto = fields.Binary(string="Foto del cliente")
     notas = fields.Text(string="Observaciones")
-    
+    reparacion_ids = fields.One2many(
+    'bytefix.reparacion',
+    'cliente_id',
+    string="Reparaciones"
+)
