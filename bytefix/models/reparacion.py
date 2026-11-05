@@ -4,7 +4,7 @@ class Reparacion(models.Model):
     _name = 'bytefix.reparacion'
     _description = 'Informacion de las reparaciones'
     
-    numero=reparacion = fields.Char(string="Numero de reparación")
+    numero_reparacion = fields.Char(string="Numero de reparación")
     cliente_id = fields.Many2one(
     'bytefix.cliente',
     string="Cliente"
@@ -12,6 +12,11 @@ class Reparacion(models.Model):
     equipo_id = fields.Many2one(
     'bytefix.equipo',
     string="Equipo"
+    )
+
+    trabajadores_ids = fields.Many2many(
+    'bytefix.trabajador',
+    string="Trabajadores asignados"
     )
     fecha_entrada = fields.Datetime(string="Fecha de entrada")
     estado = fields.Selection(
@@ -24,7 +29,7 @@ class Reparacion(models.Model):
     string="Estado de la reparación"
     )
     fecha_prevista = fields.Date(string="Fecha de entrega prevista")
-    Urgente = fields.Boolean(string="Prioridad")
-    Coste_estimado = fields.float(string="Presupuesto")
+    urgente = fields.Boolean(string="Prioridad")
+    coste_estimado = fields.Float(string="Presupuesto")
     descripcion = fields.Text(string="Problemas del equipo")
         

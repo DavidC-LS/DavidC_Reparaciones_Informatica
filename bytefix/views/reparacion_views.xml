@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Vista de lista -->
+    <record id="vista_lista_reparaciones" model="ir.ui.view">
+        <field name="name">bytefix.reparacion.list</field>
+        <field name="model">bytefix.reparacion</field>
+        <field name="arch" type="xml">
+            <list string="Reparaciones">
+                <field name="numero_reparacion"/>
+                <field name="cliente_id"/>
+                <field name="equipo_id"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="vista_formulario_reparaciones" model="ir.ui.view">
+        <field name="name">bytefix.reparacion.form</field>
+        <field name="model">bytefix.reparacion</field>
+        <field name="arch" type="xml">
+            <form string="Reparación">
+                <sheet>
+                    <group>
+                        <field name="numero_reparacion"/>
+                        <field name="cliente_id"/>
+                        <field name="equipo_id"/>
+                        <field name="fecha_entrada"/>
+                        <field name="estado"/>
+                        <field name="fecha_prevista"/>
+                        <field name="urgente"/>
+                        <field name="coste_estimado"/>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>   
+        </field>
+    </record> 
+     
+    <!-- Acción -->
+    <record id="accion_reparaciones" model="ir.actions.act_window">
+        <field name="name">Reparaciones</field>
+        <field name="res_model">bytefix.reparacion</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Menú -->
+    <menuitem id="menu_bytefix_reparaciones"
+          name="Reparaciones"
+          parent="menu_bytefix_root"
+          action="accion_reparaciones"/>
+</odoo>

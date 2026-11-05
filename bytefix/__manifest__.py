@@ -12,6 +12,8 @@
     'security/ir.model.access.csv',
     'views/cliente_views.xml',
     'views/equipo_views.xml',
+    'views/reparacion_views.xml',
+    'views/trabajador_views.xml',
     ],
     'installable': True,
     'application': True,

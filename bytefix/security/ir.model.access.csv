@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bytefix_cliente_user,access.bytefix.cliente.user,model_bytefix_cliente,base.group_user,1,1,1,1
 access_bytefix_equipo_user,access.bytefix.equipo.user,model_bytefix_equipo,base.group_user,1,1,1,1
+access_bytefix_reparacion_user,access.bytefix.reparacion.user,model_bytefix_reparacion,base.group_user,1,1,1,1
+access_bytefix_trabajador_user,access.bytefix.trabajador.user,model_bytefix_trabajador,base.group_user,1,1,1,1
