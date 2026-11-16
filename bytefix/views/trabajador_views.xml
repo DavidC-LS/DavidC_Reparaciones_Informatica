@@ -33,6 +33,7 @@
                         <field name="salario"/>
                         <field name="observaciones"/>
                         <field name="reparacion_ids"/>
+                        <field name="reparaciones_pendientes"/>
                     </group>
                 </sheet>
             </form>   

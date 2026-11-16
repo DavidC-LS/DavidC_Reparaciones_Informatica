@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class Cliente(models.Model):
     _name = 'bytefix.cliente'
@@ -18,3 +18,13 @@ class Cliente(models.Model):
     'cliente_id',
     string="Reparaciones"
 )
+    total_reparaciones = fields.Integer(
+    string="Total de reparaciones",
+    compute="_compute_total_reparaciones",
+)
+
+    #Cuenta cuantas reparaciones tiene el cliente, se usa api.depends para que se ejecute cada vez que se modifique el campo reparacion_ids
+    @api.depends("reparacion_ids")
+    def _compute_total_reparaciones(self):
+        for cliente in self:
+            cliente.total_reparaciones = len(cliente.reparacion_ids)

@@ -30,6 +30,7 @@
                     <field name="habitual"/>
                     <field name="foto"/>
                     <field name="notas"/>
+                    <field name="total_reparaciones"/>
                 </group>
             </sheet>
         </form>

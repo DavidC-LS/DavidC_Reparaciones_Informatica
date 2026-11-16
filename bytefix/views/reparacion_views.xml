@@ -32,6 +32,7 @@
                         <field name="urgente"/>
                         <field name="coste_estimado"/>
                         <field name="descripcion"/>
+                        <field name="dias_estimados"/>
                     </group>
                 </sheet>
             </form>   
