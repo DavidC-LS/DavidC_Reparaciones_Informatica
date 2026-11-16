@@ -12,6 +12,7 @@
         </list>
     </field>
 </record>
+
 <!-- Vista de formulario -->
 <record id="vista_formulario_clientes" model="ir.ui.view">
     <field name="name">bytefix.cliente.form</field>
@@ -34,11 +35,37 @@
         </form>
     </field>
 </record>
+
+    <!-- Vista de busqueda -->
+<record id="vista_busqueda_clientes" model="ir.ui.view">
+    <field name="name">bytefix.cliente.search</field>
+    <field name="model">bytefix.cliente</field>
+    <field name="arch" type="xml">
+        <search string = "Buscar Clientes">
+            <field name="nombre"/>
+            <field name="apellidos"/>
+           
+            <filter name="Habituales"
+                    string="Clientes habituales"
+                    domain="[('habitual', '=', True)]"/>
+
+            <group>
+                <filter name="agrupar_habituales" string="Habituales"
+                            context="{'group_by': 'habitual'}"/>
+            </group>
+            
+        </search>
+    </field>
+</record>
+
+
+
 <!-- Accion-->
 <record id="accion_clientes" model="ir.actions.act_window">
     <field name="name">Clientes</field>
     <field name="res_model">bytefix.cliente</field>
     <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="vista_busqueda_clientes"/>
 </record>
 
 <!-- Menu entrada principal-->
