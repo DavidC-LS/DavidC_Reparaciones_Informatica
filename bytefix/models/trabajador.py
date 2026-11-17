@@ -28,6 +28,12 @@ class Trabajador(models.Model):
     reparaciones_pendientes = fields.Integer( string = "Reparaciones pendientes",
         compute = "_compute_reparaciones_pendientes"
         )
+
+
+    #Calcula el numero de reparaciones pendientes del trabajador, 
+    # cuenta como pendientes las que esten en estado recibido o en reparacion,
+    # se usa api.depends para que se ejecute cada vez que se modifique el campo 
+    # reparacion_ids o el estado de alguna de las reparaciones asignadas. 
     @api.depends("reparacion_ids", "reparacion_ids.estado")
     def _compute_reparaciones_pendientes(self):
         for trabajador in self:
@@ -37,14 +43,17 @@ class Trabajador(models.Model):
                     reparaciones_pendientes += 1
             trabajador.reparaciones_pendientes = reparaciones_pendientes
 
-    @api.constraints("fecha_contratacion")
+    #Valida que la fecha de contratacion no sea futura y que el salario no sea negativo,
+    #si alguna de estas condiciones no se cumple lanza un error de validacion,
+    #se usa api.constrains para que se ejecute cada vez que se modifique algun dato de los dos campos.
+    @api.constrains("fecha_contratacion")
     def _validar_fecha_contratacion(self):
         for trabajador in self:
             hoy = fields.Date.context_today(trabajador)
             if trabajador.fecha_contratacion and trabajador.fecha_contratacion > hoy:
                 raise ValidationError("La fecha de contratación no puede ser futura.")
 
-    @api.constraints("salario")
+    @api.constrains("salario")
     def _validar_salario(self):
         for trabajador in self:
             if trabajador.salario < 0:

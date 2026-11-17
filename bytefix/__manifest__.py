@@ -15,6 +15,7 @@
     'views/reparacion_views.xml',
     'views/trabajador_views.xml',
     ],
+    'demo': ['demo/demo.xml'],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

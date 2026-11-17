@@ -40,7 +40,7 @@ class Reparacion(models.Model):
     #Comprobacion de que el coste estimado no sea negativo, se usa api.constraints
     #para que se ejecute cada vez que se modifique el campo coste_estimado,
     #y si es negativo se lanza un error de validacion.
-    @api.constraints("coste_estimado")
+    @api.constrains("coste_estimado")
     def validar_coste_estimado(self):
         for reparacion in self:
             if reparacion.coste_estimado < 0:

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Cliente de prueba-->
+    <record id="demo_cliente_lucia" model="bytefix.cliente">
+        <field name="nombre">Lucía</field>
+        <field name="apellidos">Santos Vega</field>
+        <field name="email">lucia.santos@example.com</field>
+        <field name="habitual" eval="True"/>
+    </record>
+    <!--Equipo de prueba-->
+    <record id="demo_equipo_portatil" model="bytefix.equipo">
+        <field name="nombre">Portátil de Lucía</field>
+        <field name="marca">Lenovo</field>
+        <field name="modelo">IdeaPad 3</field>
+        <field name="numero_serie">BF-DEMO-001</field>
+        <field name="tipo">portatil</field>
+        <field name="garantia" eval="False"/>
+    </record>
+    <!--Trabajador de prueba-->
+    <record id="demo_trabajador_mario" model="bytefix.trabajador">
+        <field name="nombre">Mario</field>
+        <field name="apellido">Rivas</field>
+        <field name="especialidad">hardware</field>
+        <field name="activo" eval="True"/>
+    </record>
+    <!--Reparación de prueba-->
+    <record id="demo_reparacion_001" model="bytefix.reparacion">
+        <field name="numero_reparacion">REP-DEMO-001</field>
+        <field name="cliente_id" ref="demo_cliente_lucia"/>
+        <field name="equipo_id" ref="demo_equipo_portatil"/>
+        <field name="trabajadores_ids"
+               eval="[Command.link(ref('demo_trabajador_mario'))]"/>
+        <field name="fecha_entrada">2026-11-10 09:00:00</field>
+        <field name="fecha_prevista">2026-11-13</field>
+        <field name="estado">en reparacion</field>
+        <field name="urgente" eval="True"/>
+        <field name="coste_estimado" eval="65.0"/>
+        <field name="descripcion">El portátil se apaga al calentarse. Revisar el ventilador.</field>
+    </record>
+</odoo>
